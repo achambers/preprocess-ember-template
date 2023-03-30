@@ -1,6 +1,5 @@
 const { ImportUtil } = require('babel-import-util');
 const util = require('../lib/util');
-const { transformTemplateLiteral } = require('./template-literal-transform');
 const { transformTemplateTag } = require('./template-tag-transform');
 
 /**
@@ -11,14 +10,6 @@ const { transformTemplateTag } = require('./template-tag-transform');
  * Its goal is to convert code like this:
  *
  * ```js
- * import { hbs } from 'ember-template-imports';
- *
- * const A = hbs(`A`, {...});
- * const B = [__GLIMMER_TEMPLATE(`B`, {...})];
- * class C {
- *   template = hbs(`C`, {...});
- * }
- *
  * [__GLIMMER_TEMPLATE(`default`, {...})];
  *
  * class D {
@@ -60,14 +51,6 @@ module.exports = function (babel) {
       enter(path, state) {
         state.importUtil = new ImportUtil(t, path);
       },
-      exit(path, state) {
-        if (state.hadTaggedTemplate) {
-          state.importUtil.removeImport(
-            util.TEMPLATE_LITERAL_MODULE_SPECIFIER,
-            util.TEMPLATE_LITERAL_IDENTIFIER
-          );
-        }
-      },
     },
 
     // Process class bodies before things like class properties get transformed
@@ -91,10 +74,7 @@ module.exports = function (babel) {
     },
 
     CallExpression(path, state) {
-      if (util.isTemplateLiteral(path)) {
-        state.hadTaggedTemplate = true;
-        transformTemplateLiteral(t, path, state);
-      } else if (util.isTemplateTag(path)) {
+      if (util.isTemplateTag(path)) {
         transformTemplateTag(t, path, state);
       }
     },
