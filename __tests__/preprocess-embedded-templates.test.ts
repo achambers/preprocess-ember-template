@@ -102,4 +102,21 @@ describe('preprocessEmbeddedTemplates', function () {
 
     expect(templates.output).not.toContain('//# sourceMappingURL');
   });
+
+  it('does not parse <template> within template-literals', function () {
+    const input = `
+      const DEMO = \`<template>Hi there</template>\`;
+    `;
+
+    const templates = preprocessEmbeddedTemplates(input, {
+      getTemplateLocals,
+      relativePath: 'foo.gjs',
+      templateTag: util.TEMPLATE_TAG_NAME,
+      templateTagReplacement: util.TEMPLATE_TAG_PLACEHOLDER,
+      includeSourceMaps: true,
+      includeTemplateTokens: false,
+    });
+
+    expect(templates.output).not.toContain(util.TEMPLATE_TAG_PLACEHOLDER);
+  });
 });

@@ -45,12 +45,14 @@ describe('parseTemplates', function () {
           "contents": "Hello!",
           "end": Object {
             "0": "</template>",
+            "1": undefined,
             "groups": undefined,
             "index": 16,
             "input": "<template>Hello!</template>",
           },
           "start": Object {
             "0": "<template>",
+            "1": undefined,
             "groups": undefined,
             "index": 0,
             "input": "<template>Hello!</template>",
@@ -78,6 +80,7 @@ describe('parseTemplates', function () {
           "contents": "Hello!",
           "end": Object {
             "0": "</template>",
+            "1": undefined,
             "groups": undefined,
             "index": 57,
             "input": "
@@ -87,6 +90,7 @@ describe('parseTemplates', function () {
           },
           "start": Object {
             "0": "<template>",
+            "1": undefined,
             "groups": undefined,
             "index": 41,
             "input": "

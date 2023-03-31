@@ -31,6 +31,9 @@ const newLine = /\n/;
 const multiLineCommentStart = /\/\*/;
 const multiLineCommentEnd = /\*\//;
 
+const templateLiteralStart = /([$a-zA-Z_][0-9a-zA-Z_$]*)?`/;
+const templateLiteralEnd = /`/;
+
 const dynamicSegmentStart = /\${/;
 const blockStart = /{/;
 const dynamicSegmentEnd = /}/;
@@ -86,6 +89,8 @@ export function parseTemplates(
       multiLineCommentStart.source,
       multiLineCommentEnd.source,
       stringDelimiter.source,
+      templateLiteralStart.source,
+      templateLiteralEnd.source,
       dynamicSegmentStart.source,
       dynamicSegmentEnd.source,
       blockStart.source,
@@ -118,6 +123,8 @@ export function parseTemplates(
       parseMultiLineComment(results, template, token, tokens);
     } else if (token[0].match(singleLineCommentStart)) {
       parseSingleLineComment(results, template, token, tokens);
+    } else if (token[0].match(templateLiteralStart)) {
+      parseTemplateLiteral(template, tokens);
     } else if (
       isTopLevel &&
       templateTag !== undefined &&
@@ -185,6 +192,24 @@ export function parseTemplates(
       const currentToken = expect(tokens.shift(), 'expected token');
 
       if (currentToken[0] === '*/') {
+        return;
+      }
+    }
+  }
+
+  /**
+   * Parse a template literal. If a dynamic segment is found, enters the dynamic
+   * segment and parses it recursively. If no dynamic segments are found and the
+   * literal is top level (e.g. not nested within a dynamic segment) and has a
+   * tag, pushes it into the list of results.
+   */
+  function parseTemplateLiteral(template: string, tokens: RegExpMatchArray[]) {
+    while (tokens.length > 0) {
+      const currentToken = expect(tokens.shift(), 'expected token');
+
+      if (isEscaped(template, currentToken.index)) continue;
+
+      if (currentToken[0].match(templateLiteralEnd)) {
         return;
       }
     }
