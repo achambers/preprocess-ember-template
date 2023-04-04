@@ -39,6 +39,42 @@ describe('preprocessEmbeddedTemplates', function () {
     expect(templates).toEqual(expected);
   });
 
+  it('<template></template> with no content', function () {
+    const input = '<template></template>';
+    const templates = preprocessEmbeddedTemplates(input, {
+      getTemplateLocals,
+      relativePath: 'foo.gjs',
+      templateTag: util.TEMPLATE_TAG_NAME,
+      templateTagReplacement: util.TEMPLATE_TAG_PLACEHOLDER,
+      includeSourceMaps: false,
+      includeTemplateTokens: false,
+    });
+
+    const expected = {
+      output: '[__GLIMMER_TEMPLATE(``, { strictMode: true })]',
+      replacements: [
+        {
+          type: 'start',
+          index: 0,
+          oldLength: 10,
+          newLength: 21,
+          originalCol: 1,
+          originalLine: 1,
+        },
+        {
+          type: 'end',
+          index: 10,
+          oldLength: 11,
+          newLength: 25,
+          originalCol: 11,
+          originalLine: 1,
+        },
+      ],
+    };
+
+    expect(templates).toEqual(expected);
+  });
+
   it('<template></template> with backticks in content', function () {
     const input = '<template>Hello `world`!</template>';
     const templates = preprocessEmbeddedTemplates(input, {
