@@ -234,6 +234,7 @@ export function preprocessEmbeddedTemplates(
 }
 
 function ensureBackticksEscaped(s: MagicString, start: number, end: number) {
+  if (start >= end) return;
   let content = s.slice(start, end);
   content = content.replace(/(?<!\\)`/g, '\\`');
   s.overwrite(start, end, content, false);
