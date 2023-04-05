@@ -10,6 +10,8 @@ const { transformTemplateTag } = require('./template-tag-transform');
  * Its goal is to convert code like this:
  *
  * ```js
+ * const B = [__GLIMMER_TEMPLATE(`B`, {...})];
+ *
  * [__GLIMMER_TEMPLATE(`default`, {...})];
  *
  * class D {
@@ -24,16 +26,10 @@ const { transformTemplateTag } = require('./template-tag-transform');
  * import { setComponentTemplate } from '@ember/component';
  * import templateOnlyComponent from '@ember/component/template-only';
  *
- * const A = setComponentTemplate(
- *   precompileTemplate(`A`, {...}),
- *   templateOnlyComponent('this-module.js', 'A')
- * );
  * const B = setComponentTemplate(
  *   precompileTemplate(`B`, {...}),
  *   templateOnlyComponent('this-module.js', 'B')
  * );
- * class C {}
- * setComponentTemplate(precompileTemplate(`C`, {...}), C);
  *
  * export default setComponentTemplate(
  *   precompileTemplate(`default`, {...}),
