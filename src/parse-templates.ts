@@ -1,6 +1,5 @@
 import matchAll from 'string.prototype.matchall';
 
-import { TEMPLATE_TAG_NAME } from './util';
 import { expect } from './debug';
 
 export type TemplateMatch = TemplateTagMatch;
@@ -52,7 +51,7 @@ function isEscaped(template: string, _offset: number | undefined) {
 }
 
 export const DEFAULT_PARSE_TEMPLATES_OPTIONS = {
-  templateTag: TEMPLATE_TAG_NAME,
+  templateTag: 'template',
 };
 
 /**

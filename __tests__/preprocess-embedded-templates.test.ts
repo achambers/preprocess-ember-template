@@ -1,6 +1,8 @@
 import { preprocessEmbeddedTemplates } from '../src/preprocess-embedded-templates';
 import { getTemplateLocals } from '@glimmer/syntax';
-import * as util from '../src/util';
+
+const TEMPLATE_TAG_NAME = 'template';
+const TEMPLATE_TAG_PLACEHOLDER = '__GLIMMER_TEMPLATE';
 
 describe('preprocessEmbeddedTemplates', function () {
   it('<template></template>', function () {
@@ -8,8 +10,8 @@ describe('preprocessEmbeddedTemplates', function () {
     const templates = preprocessEmbeddedTemplates(input, {
       getTemplateLocals,
       relativePath: 'foo.gjs',
-      templateTag: util.TEMPLATE_TAG_NAME,
-      templateTagReplacement: util.TEMPLATE_TAG_PLACEHOLDER,
+      templateTag: TEMPLATE_TAG_NAME,
+      templateTagReplacement: TEMPLATE_TAG_PLACEHOLDER,
       includeSourceMaps: false,
       includeTemplateTokens: false,
     });
@@ -44,8 +46,8 @@ describe('preprocessEmbeddedTemplates', function () {
     const templates = preprocessEmbeddedTemplates(input, {
       getTemplateLocals,
       relativePath: 'foo.gjs',
-      templateTag: util.TEMPLATE_TAG_NAME,
-      templateTagReplacement: util.TEMPLATE_TAG_PLACEHOLDER,
+      templateTag: TEMPLATE_TAG_NAME,
+      templateTagReplacement: TEMPLATE_TAG_PLACEHOLDER,
       includeSourceMaps: false,
       includeTemplateTokens: false,
     });
@@ -80,8 +82,8 @@ describe('preprocessEmbeddedTemplates', function () {
     const templates = preprocessEmbeddedTemplates(input, {
       getTemplateLocals,
       relativePath: 'foo.gjs',
-      templateTag: util.TEMPLATE_TAG_NAME,
-      templateTagReplacement: util.TEMPLATE_TAG_PLACEHOLDER,
+      templateTag: TEMPLATE_TAG_NAME,
+      templateTagReplacement: TEMPLATE_TAG_PLACEHOLDER,
       includeSourceMaps: false,
       includeTemplateTokens: false,
     });
@@ -117,8 +119,8 @@ describe('preprocessEmbeddedTemplates', function () {
     const templates = preprocessEmbeddedTemplates(input, {
       getTemplateLocals,
       relativePath: 'foo.gjs',
-      templateTag: util.TEMPLATE_TAG_NAME,
-      templateTagReplacement: util.TEMPLATE_TAG_PLACEHOLDER,
+      templateTag: TEMPLATE_TAG_NAME,
+      templateTagReplacement: TEMPLATE_TAG_PLACEHOLDER,
       includeSourceMaps: true,
       includeTemplateTokens: false,
     });
@@ -130,8 +132,8 @@ describe('preprocessEmbeddedTemplates', function () {
     const templates = preprocessEmbeddedTemplates(input, {
       getTemplateLocals,
       relativePath: 'foo.gjs',
-      templateTag: util.TEMPLATE_TAG_NAME,
-      templateTagReplacement: util.TEMPLATE_TAG_PLACEHOLDER,
+      templateTag: TEMPLATE_TAG_NAME,
+      templateTagReplacement: TEMPLATE_TAG_PLACEHOLDER,
       includeSourceMaps: true,
       includeTemplateTokens: false,
     });
@@ -147,12 +149,12 @@ describe('preprocessEmbeddedTemplates', function () {
     const templates = preprocessEmbeddedTemplates(input, {
       getTemplateLocals,
       relativePath: 'foo.gjs',
-      templateTag: util.TEMPLATE_TAG_NAME,
-      templateTagReplacement: util.TEMPLATE_TAG_PLACEHOLDER,
+      templateTag: TEMPLATE_TAG_NAME,
+      templateTagReplacement: TEMPLATE_TAG_PLACEHOLDER,
       includeSourceMaps: true,
       includeTemplateTokens: false,
     });
 
-    expect(templates.output).not.toContain(util.TEMPLATE_TAG_PLACEHOLDER);
+    expect(templates.output).not.toContain(TEMPLATE_TAG_PLACEHOLDER);
   });
 });
