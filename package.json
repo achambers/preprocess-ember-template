@@ -1,34 +1,22 @@
 {
-  "name": "ember-template-imports",
-  "version": "3.4.1",
-  "description": "The default blueprint for ember-cli addons.",
-  "keywords": [
-    "ember-addon"
-  ],
+  "name": "preprocess-ember-template",
+  "version": "0.0.0",
+  "description": "Preprocessor for Ember templates",
   "repository": {
     "type": "git",
-    "url": "git@github.com:ember-template-imports/ember-template-imports.git"
+    "url": ""
   },
   "license": "MIT",
   "author": "",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
   "scripts": {
     "build": "tsc",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel 'lint:!(fix)'",
     "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
-    "lint:hbs": "ember-template-lint .",
-    "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "prepack": "npm run build",
-    "start": "ember serve",
     "test": "npm-run-all lint test:*",
-    "test:jest": "jest",
-    "test:ember": "ember test",
-    "test:ember-compatibility": "ember try:each"
+    "test:jest": "jest"
   },
   "dependencies": {
     "babel-import-util": "^0.2.0",
@@ -100,9 +88,6 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-  },
-  "ember": {
-    "edition": "octane"
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
