@@ -104,14 +104,6 @@
   "ember": {
     "edition": "octane"
   },
-  "ember-addon": {
-    "main": "ember-addon-main.js",
-    "configPath": "tests/dummy/config",
-    "before": [
-      "ember-cli-htmlbars",
-      "ember-cli-babel"
-    ]
-  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "release-it": {
