@@ -26,6 +26,8 @@
   "devDependencies": {
     "@glimmer/syntax": "0.84.3",
     "@types/jest": "^27.4.1",
+    "@types/line-column": "^1.0.0",
+    "@types/string.prototype.matchall": "^4.0.1",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "babel-eslint": "^10.1.0",
@@ -54,8 +56,8 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/preprocess-embedded-templates.js",
+  "types": "lib/preprocess-embedded-templates.d.ts",
   "release-it": {
     "plugins": {
       "release-it-lerna-changelog": {
