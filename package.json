@@ -19,27 +19,18 @@
     "test:jest": "jest"
   },
   "dependencies": {
-    "babel-import-util": "^0.2.0",
-    "broccoli-stew": "^3.0.0",
     "line-column": "^1.0.2",
     "magic-string": "^0.25.7",
-    "string.prototype.matchall": "^4.0.6",
-    "validate-peer-dependencies": "^1.1.0"
+    "string.prototype.matchall": "^4.0.6"
   },
   "devDependencies": {
-    "@babel/traverse": "^7.19.6",
-    "@babel/types": "^7.19.4",
     "@glimmer/syntax": "0.84.3",
     "@types/jest": "^27.4.1",
-    "@types/line-column": "^1.0.0",
-    "@types/string.prototype.matchall": "^4.0.1",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "babel-eslint": "^10.1.0",
-    "broccoli-asset-rev": "^3.0.0",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-ember": "^10.2.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^27.0.0",
