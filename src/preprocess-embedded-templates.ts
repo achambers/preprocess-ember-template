@@ -178,7 +178,7 @@ function replaceMatch(
  *
  *   hbs(`<MyComponent/>`, { scope() { return {MyComponent}; } });
  */
-export function preprocessEmbeddedTemplates(
+export default function preprocessEmbeddedTemplates(
   template: string,
   options: PreprocessOptions
 ): PreprocessedOutput {
