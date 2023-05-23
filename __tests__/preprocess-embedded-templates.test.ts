@@ -1,4 +1,4 @@
-import { preprocessEmbeddedTemplates } from '../src/preprocess-embedded-templates';
+import preprocessEmbeddedTemplates from '../src/preprocess-embedded-templates';
 import { getTemplateLocals } from '@glimmer/syntax';
 import * as util from '../src/util';
 
